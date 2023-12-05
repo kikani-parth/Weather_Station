@@ -1,62 +1,96 @@
 // app.js
-// For this example, we'll use dummy data.
 const dummyData = {
-  liveTemperature: 25, // Replace with actual live temperature data
-  liveHumidity: 50, // Replace with actual live humidity data
-  livePressure: 1013.25, // Default pressure value
-  liveAltitude: 0, // Default altitude value
-  liveChartData: [10, 20, 30, 25, 35], // Replace with actual live chart data
-  dateRangeChartData: [15, 25, 20, 30, 40], // Replace with actual date range chart data
+  liveTemperature: 25,
+  liveHumidity: 50,
+  livePressure: 1013.25,
+  liveAltitude: 0,
+  liveChartData: [10, 20, 30, 25, 35],
+  dateRangeChartData: [], // Placeholder for date range data
 };
 
-// Replace 'YOUR_OPENWEATHERMAP_API_KEY' and 'YOUR_CITY' with actual values
 const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
 const city = 'YOUR_CITY';
 
 function subscribeToMqtt() {
   // ... (existing MQTT subscription logic)
 
-  // Fetch weather data from OpenWeatherMap API
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
-      // Update dummyData with pressure and altitude data
-      dummyData.liveTemperature = data.main.temp; // Assuming temperature is in the response
-      dummyData.liveHumidity = data.main.humidity; // Assuming humidity is in the response
+      dummyData.liveTemperature = data.main.temp;
+      dummyData.liveHumidity = data.main.humidity;
       dummyData.livePressure = data.main.pressure;
       dummyData.liveAltitude = calculateAltitude(data.main.pressure);
 
-      // Call updateUI to refresh the UI with new data
       updateUI();
     })
     .catch(error => console.error('Error fetching weather data:', error));
 }
 
 function updateUI() {
-  // ... (existing UI update logic)
-
-  // Update pressure and altitude in the live data display
   document.getElementById('live-temperature').innerText = `Temperature: ${dummyData.liveTemperature} °C`;
   document.getElementById('live-humidity').innerText = `Humidity: ${dummyData.liveHumidity}%`;
   document.getElementById('live-pressure').innerText = `Pressure: ${dummyData.livePressure} hPa`;
   document.getElementById('live-altitude').innerText = `Altitude: ${dummyData.liveAltitude} meters`;
+
+  updateLiveChart();
 }
 
 function updateLiveChart() {
-  // ... (existing live chart update logic)
+  const ctxLive = document.getElementById('live-chart').getContext('2d');
+  const liveChart = new Chart(ctxLive, {
+    type: 'line',
+    data: {
+      labels: Array.from({ length: dummyData.liveChartData.length }, (_, i) => i + 1),
+      datasets: [{
+        label: 'Live Data',
+        data: dummyData.liveChartData,
+        borderColor: 'blue',
+        fill: false,
+      }],
+    },
+  });
+
+  // Assume date range data is fetched from MongoDB, and update the chart
+  fetchDateRangeDataFromMongo().then(dateRangeData => {
+    dummyData.dateRangeChartData = dateRangeData;
+    updateDateRangeChart();
+  });
 }
 
 function updateDateRangeChart() {
-  // ... (existing date range chart update logic)
+  const ctxDateRange = document.getElementById('date-range-chart').getContext('2d');
+  const dateRangeChart = new Chart(ctxDateRange, {
+    type: 'line',
+    data: {
+      labels: Array.from({ length: dummyData.dateRangeChartData.length }, (_, i) => i + 1),
+      datasets: [{
+        label: 'Date Range Data',
+        data: dummyData.dateRangeChartData,
+        borderColor: 'green',
+        fill: false,
+      }],
+    },
+  });
 }
 
 function calculateAltitude(pressure) {
-  // Implement your altitude calculation logic here
-  // This is a simple example, you may need to use a more complex formula
-  const seaLevelPressure = 1013.25; // Standard sea level pressure in hPa
+  const seaLevelPressure = 1013.25;
   const altitude = 44330 * (1 - Math.pow(pressure / seaLevelPressure, 0.1903));
-  return altitude.toFixed(2); // Round to 2 decimal places
+  return altitude.toFixed(2);
 }
 
-// Subscribe to MQTT topics and update UI
+async function fetchDateRangeDataFromMongo() {
+  try {
+    const connectToMongo = require('./mongo'); // Adjust the path based on your project structure
+    const db = await connectToMongo();
+    const collection = db.collection('your_collection_name'); // Replace with your actual collection name
+    const dateRangeData = await collection.find(/* your query */).toArray();
+    return dateRangeData.map(data => data.value); // Adjust the mapping based on your document structure
+  } catch (error) {
+    console.error('Error fetching date range data from MongoDB:', error);
+    return [];
+  }
+}
+
 subscribeToMqtt();
