@@ -16,8 +16,39 @@ body {
 }
 
 
+.typing {
+ 
+  display: flex;
+ 
+  align-items: center;
+  justify-content: center;
+  
+   
+}
+
 h1 {
-  margin-bottom: 15px;
+  animation: wordSuffel 3s steps(40) infinite;
+  color: blue;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  overflow: hidden;
+  justify-content: left;
+  width: fit-content;
+  
+}
+
+@keyframes wordSuffel {
+  from {
+    width: 0;
+  }
+  to {
+    width: 35%;
+  }
+}
+h2 {
+  text-align: center;
+  color: #060606; 
 }
 
 
@@ -38,6 +69,7 @@ input[type="date"] {
 
 
 canvas {
+
   width: 100%;
   height: auto;
   border: 2px solid #f5f4f4;
@@ -54,9 +86,9 @@ canvas {
   }
 }
 
-#live-temperature,
+/* #live-temperature,
 #live-humidity,
 #live-pressure,
 #live-altitude {
-  animation: fadeIn 2s ease-in-out forwards;
-}
+ animation: fadeIn 3s ease-in-out forwards infinite;
+} */

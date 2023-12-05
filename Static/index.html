@@ -10,12 +10,15 @@
 <body>
   <div class="container">
     <div class="data-display">
+      <div class="typing">
       <h1>Live MQTT Data</h1>
+    </div>
       <p id="live-temperature">Temperature: Loading...</p>
       <p id="live-humidity">Humidity: Loading...</p>
       <p id="live-pressure">Pressure: Loading...</p>
       <p id="live-altitude">Altitude: Loading...</p>
     </div>
+    <h2>Chart</h2>
     <div class="chart-container">
       <canvas id="live-chart"></canvas>
     </div>
@@ -30,6 +33,6 @@
   </div>
 
   <script src="app.js"></script>
-  <script src="mongo.js"></script> <!-- Include the MongoDB connection script -->
+  <script src="mongo.js"></script> 
 </body>
 </html>
