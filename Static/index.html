@@ -1,3 +1,4 @@
+<!-- Html file -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,10 @@
   <div class="container">
     <div class="data-display">
       <h1>Live MQTT Data</h1>
-      <p id="live-data">Waiting for data...</p>
+      <p id="live-temperature">Temperature: Loading...</p>
+      <p id="live-humidity">Humidity: Loading...</p>
+      <p id="live-pressure">Pressure: Loading...</p>
+      <p id="live-altitude">Altitude: Loading...</p>
     </div>
     <div class="chart-container">
       <canvas id="live-chart"></canvas>
@@ -25,7 +29,7 @@
       <canvas id="date-range-chart"></canvas>
     </div>
   </div>
-s
+
   <script src="app.js"></script>
 </body>
 </html>
