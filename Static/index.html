@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MQTT and MongoDB Data Visualization</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="data-display">
+      <div class="typing">
+      <h1>Live MQTT Data</h1>
+    </div>
+      <p id="live-temperature">Temperature: Loading...</p>
+      <p id="live-humidity">Humidity: Loading...</p>
+      <p id="live-pressure">Pressure: Loading...</p>
+      <p id="live-altitude">Altitude: Loading...</p>
+    </div>
+    <h2>Chart</h2>
+    <div class="chart-container">
+      <canvas id="live-chart"></canvas>
+    </div>
+    <div class="chart-container">
+      <h2>Date Range Chart</h2>
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date">
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date">
+      <canvas id="date-range-chart"></canvas>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="mongo.js"></script> 
+</body>
+</html>
