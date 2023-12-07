@@ -1,13 +1,13 @@
-// mongo.js - Updated for browser environment
-// Use ES6 import syntax
-const { MongoClient, ServerApiVersion } = require('mongodb');
+// mongo.js
+const { MongoClient } = require('mongodb');
+
 const uri = 'mongodb://127.0.0.1:27017';
 const dbName = 'SmartWeatherStation';
 const collectionName = 'SensorData2';
 
 const mongoClient = new MongoClient(uri, {
   serverApi: {
-    version: ServerApiVersion.v1,
+    version: '1',
     strict: true,
     deprecationErrors: true,
   },
@@ -46,7 +46,7 @@ async function read(query) {
   }
 }
 
-export {
+module.exports = {
   connectToDatabase,
   store,
   read,

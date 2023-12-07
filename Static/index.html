@@ -13,10 +13,12 @@
       <div class="typing">
       <h1>Live MQTT Data</h1>
     </div>
-      <p id="live-temperature">Temperature: Loading...</p>
-      <p id="live-humidity">Humidity: Loading...</p>
-      <p id="live-pressure">Pressure: Loading...</p>
-      <p id="live-altitude">Altitude: Loading...</p>
+<!-- Add data placeholders to your HTML file -->
+<p id="live-temperature">Temperature: <span id="temperature-placeholder">Loading...</span></p>
+<p id="live-humidity">Humidity: <span id="humidity-placeholder">Loading...</span></p>
+<p id="live-pressure">Pressure: <span id="pressure-placeholder">Loading...</span></p>
+<p id="live-altitude">Altitude: <span id="altitude-placeholder">Loading...</span></p>
+
     </div>
     <h2>Chart</h2>
     <div class="chart-container">
@@ -31,8 +33,7 @@
       <canvas id="date-range-chart"></canvas>
     </div>
   </div>
-
-  <script src="mqtt.js"></script>
+  <script src="app.js"></script>
   <script src="mongo.js"></script> 
 </body>
 </html>
