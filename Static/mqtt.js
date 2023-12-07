@@ -82,7 +82,7 @@ function calculateAltitude(pressure) {
 
 async function fetchDateRangeDataFromMongo() {
   try {
-    const connectToMongo = require('./mongo'); // Adjust the path based on your project structure
+    const connectToMongo = require('./mongo.mjs'); // Adjust the path based on your project structure
     const db = await connectToMongo();
     const collection = db.collection('your_collection_name'); // Replace with your actual collection name
     const dateRangeData = await collection.find(/* your query */).toArray();

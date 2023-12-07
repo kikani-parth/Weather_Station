@@ -1,20 +1,53 @@
-// mongo.js
-// Create a MongoDB connection script
-// Replace 'YOUR_MONGODB_CONNECTION_STRING' with your actual MongoDB connection string
+// mongo.js - Updated for browser environment
+// Use ES6 import syntax
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = 'mongodb://127.0.0.1:27017';
+const dbName = 'SmartWeatherStation';
+const collectionName = 'SensorData2';
 
-const MongoClient = require('mongodb').MongoClient;
+const mongoClient = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
 
-const mongoURI = 'YOUR_MONGODB_CONNECTION_STRING';
-
-async function connectToMongo() {
+async function connectToDatabase() {
   try {
-    const client = await MongoClient.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log('Connected to MongoDB');
-    return client.db(); // Return the database instance
+    await mongoClient.connect();
+    console.log('Connected to the database successfully!');
+    const db = mongoClient.db(dbName);
+    return db.collection(collectionName);
   } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
+    console.error('Error connecting to the database:', error);
     throw error;
   }
 }
 
-module.exports = connectToMongo;
+async function store(data) {
+  try {
+    const collection = await connectToDatabase();
+    await collection.insertOne(data);
+    console.log('Data inserted successfully!');
+  } catch (error) {
+    console.error('Error inserting data:', error);
+    throw error;
+  }
+}
+
+async function read(query) {
+  try {
+    const collection = await connectToDatabase();
+    return collection.find(query).toArray();
+  } catch (error) {
+    console.error('Error retrieving data from MongoDB:', error);
+    throw error;
+  }
+}
+
+export {
+  connectToDatabase,
+  store,
+  read,
+};
