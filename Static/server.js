@@ -16,7 +16,7 @@ const server = http.createServer(app);
 /* MQTT */
 
 // MQTT broker URL
-const brokerUrl = 'mqtt://127.0.0.1:1883';
+const brokerUrl = 'mqtt://192.168.1.109:1883';
 
 // Creating MQTT client instance
 const client = mqtt.connect(brokerUrl);
