@@ -1,16 +1,12 @@
-// mongo.js
 const { MongoClient } = require('mongodb');
 
-const uri = 'mongodb://127.0.0.1:27017';
-const dbName = 'SmartWeatherStation';
-const collectionName = 'SensorData2';
+const uri = 'mongodb+srv://parthkikani02:Iot@weather.zxwfoi7.mongodb.net/';
+const dbName = 'Weather_Station';
+const collectionName = 'Weather_Data';
 
 const mongoClient = new MongoClient(uri, {
-  serverApi: {
-    version: '1',
-    strict: true,
-    deprecationErrors: true,
-  },
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 async function connectToDatabase() {
@@ -46,8 +42,29 @@ async function read(query) {
   }
 }
 
+async function generateAndStoreDummyData() {
+  try {
+    const dummyData = {
+      // Your dummy data fields here
+      temperature: Math.random() * 30,
+      humidity: Math.random() * 100,
+      timestamp: new Date(),
+    };
+
+    await store(dummyData);
+    console.log('Dummy data generated and stored successfully!');
+  } catch (error) {
+    console.error('Error generating and storing dummy data:', error);
+    throw error;
+  }
+}
+
+// Example: Call the function to generate and store dummy data
+generateAndStoreDummyData();
+
 module.exports = {
   connectToDatabase,
   store,
   read,
+  generateAndStoreDummyData,
 };
