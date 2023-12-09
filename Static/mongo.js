@@ -10,7 +10,7 @@ const mongoClient = new MongoClient(uri, {
 });
 
 async function connectToDatabase() {
-  try {
+  try {            
     await mongoClient.connect();
     console.log('Connected to the database successfully!');
     const db = mongoClient.db(dbName);
@@ -42,29 +42,12 @@ async function read(query) {
   }
 }
 
-async function generateAndStoreDummyData() {
-  try {
-    const dummyData = {
-      // Your dummy data fields here
-      temperature: Math.random() * 30,
-      humidity: Math.random() * 100,
-      timestamp: new Date(),
-    };
-
-    await store(dummyData);
-    console.log('Dummy data generated and stored successfully!');
-  } catch (error) {
-    console.error('Error generating and storing dummy data:', error);
-    throw error;
-  }
-}
-
-// Example: Call the function to generate and store dummy data
-generateAndStoreDummyData();
-
 module.exports = {
   connectToDatabase,
   store,
   read,
-  generateAndStoreDummyData,
 };
+
+
+
+
