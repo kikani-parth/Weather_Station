@@ -10,6 +10,24 @@ lerna-debug.log*
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
+# Default ignored files
+/shelf/
+.idea/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Node Modules
+node_modules/
+# Node.js Core
+.idea/jsLibraryMappings.xml
+# IntelliJ IDEA project files
+*.iml
+.idea/
+#DB Navigator
+.idea/dbnavigator.xml
+
 # Runtime data
 pids
 *.pid
