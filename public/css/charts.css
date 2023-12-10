@@ -9,7 +9,7 @@ body {
 
 /* Navigation Menu styles */
 .navigation-menu {
-    background-color: #fff;
+    background-color: #f9d9d9;
     border: 1px solid #ddd;
     padding: 10px;
     margin: 10px;
@@ -29,7 +29,7 @@ body {
 }
 
 .navigation-menu a {
-    color: #ff6600;
+    color: #00bcd4;
     text-decoration: none;
     font-size: large;
     font-weight: bold;
@@ -38,7 +38,7 @@ body {
 
 
 .chart-menu {
-    color: #ff6600;
+    color:#00bcd4;
     font-weight: bold;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -58,7 +58,7 @@ body {
 }
 
 #rangeSelector {
-    color: #ff6600;
+    color: #00bcd4;
     font-size: large;
     font-weight: bold;
     border-radius: 5px;
@@ -85,11 +85,11 @@ body {
 }
 
 #updateChart {
-    color: #ff6600;
+    color:#00bcd4;
     font-family: Roboto, sans-serif;
     font-size: large;
     font-weight: bold;
-    background-color: #fff;
+    background-color: #fde1e1;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
@@ -99,7 +99,7 @@ body {
 }
 
 #doughnutChartInput {
-    color: #ff6600;
+    color: #00bcd4;
     font-size: 18px;
     font-weight: bold;
     border-radius: 5px;
@@ -126,7 +126,7 @@ body {
 }
 
 #pagination button {
-    color: #ff6600;
+    color: #00bcd4;
     font-family: Roboto, sans-serif;
     border: 1px solid #ccc;
     border-radius: 5px;

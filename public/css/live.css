@@ -29,7 +29,7 @@ body {
 }
 
 .navigation-menu a {
-    color: #ff6600;
+    color: #00bcd4;
     text-decoration: none;
     font-size: large;
     font-weight: bold;
@@ -54,7 +54,7 @@ h1 {
 }
 
 .parameter strong {
-    color: #f60;
+    color: #00bcd4;
     font-weight: bold;
 }
 
@@ -83,7 +83,7 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f60;
+    background-color: #00bcd4;
     border-radius: 15px;
     transition: 0.4s;
     display: flex;
@@ -97,13 +97,13 @@ h1 {
     height: 100%;
     width: 50%;
     line-height: 30px;
-    background-color: #f60;
+    background-color: #00bcd4;
     border-radius: 50%;
     transition: 0.4s;
 }
 
 input:checked + .toggle-slider {
-    background-color: #f60; /* Background color when checked */
+    background-color: #00bcd4; /* Background color when checked */
 }
 
 input:checked + .toggle-slider:before {
@@ -137,14 +137,14 @@ input:checked + .toggle-slider:before {
 
 /* Slider value styles */
 .slider-value {
-    color: #f60;
+    color: #00bcd4;
     font-weight: bold;
     display: block;
     margin-top: 10px;
 }
 
 #notification {
-    color: #f60;
+    color: #00bcd4;
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px;
@@ -158,4 +158,23 @@ input:checked + .toggle-slider:before {
     margin: auto;
     height: 80vh;
     width: 80vw;
+}
+@keyframes wordShuffle {
+    from {
+        width: 0;
+    } 
+    to {
+        width: 100%;
+    }
+}
+
+h1 {
+    color:  #00bcd4;
+    animation: wordShuffle 4s steps(50) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center; 
+    display: block; 
+    width: fit-content;
+    margin: auto; 
 }
