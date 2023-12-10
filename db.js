@@ -1,6 +1,6 @@
 const {MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
 
-const uri = "mongodb+srv://parthkikani02:Iot@weather.zxwfoi7.mongodb.net/";    // MongoDB connection URI
+const uri = "mongodb://localhost:27017";    // MongoDB connection URI
 const dbName = "Smart_Weather_Station";     // Database name
 
 // Create a new instance of the MongoClient
