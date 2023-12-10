@@ -16,6 +16,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    
 }
 
 .navigation-menu ul {
@@ -170,11 +171,12 @@ input:checked + .toggle-slider:before {
 
 h1 {
     color:  #00bcd4;
-    animation: wordShuffle 4s steps(50) infinite;
+    animation: wordShuffle 5s steps(60) infinite;
     white-space: nowrap;
     overflow: hidden;
     text-align: center; 
     display: block; 
     width: fit-content;
     margin: auto; 
+
 }
