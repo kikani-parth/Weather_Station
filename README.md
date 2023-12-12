@@ -16,20 +16,12 @@ Make sure you have the following installed:
 - MongoDB
 - MQTT Broker
 
-Installation
-Clone the repository:
-- git clone https://github.com/your-username/smart-weather-station.git
-
 Install dependencies:
 - cd smart-weather-station
 - npm install
 
 Configure MongoDB:
 - Update the MongoDB connection URI in db.js with your own URI.
-
-Start the server:
-- node app.js
-- The server will be running on http://localhost:3000.
 
 Usage
 Access the live page at http://localhost:3000 for real-time weather data.
